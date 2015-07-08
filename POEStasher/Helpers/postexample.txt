@@ -1,0 +1,21 @@
+﻿POST /path/to/script.php HTTP/1.0
+Host: example.com
+Content-type: multipart/form-data, boundary=AaB03x
+Content-Length: $requestlen
+
+--AaB03x
+content-disposition: form-data; name="field1"
+
+$field1
+--AaB03x
+content-disposition: form-data; name="field2"
+
+$field2
+--AaB03x
+content-disposition: form-data; name="userfile"; filename="$filename"
+Content-Type: $mimetype
+Content-Transfer-Encoding: binary
+
+$binarydata
+--AaB03x--
+==========================

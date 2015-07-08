@@ -1,0 +1,25 @@
+﻿<Window x:Class="POEStasher.ItemOwnerManager"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ItemOwnerManager" Height="300" Width="300" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Grid>
+        <ListView Name="lvOwners" SelectionMode="Single">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="ItemOwnerListEntry">
+                    <DockPanel LastChildFill="False">
+                        <TextBlock DockPanel.Dock="Left" FontSize="14" Width="100" Margin="1,1,0,0" TextWrapping="Wrap" Text="{Binding Path=Owner}" Foreground="DarkBlue"/>
+                        <TextBlock DockPanel.Dock="Left" FontSize="11" Width="100" VerticalAlignment="Center" Text="{Binding Path=LastRefreshDisplay}"/>
+                        <Button DockPanel.Dock="Right" Name="bDel" Content="Delete" Click="bDel_Click"/>
+                        <TextBlock DockPanel.Dock="Right" Text=" "/>
+                        <Button DockPanel.Dock="Right" Name="bExport" Content="Export" Click="bExport_Click"/>
+                    </DockPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

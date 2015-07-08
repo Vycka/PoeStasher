@@ -1,0 +1,41 @@
+﻿<Window x:Class="POEStasher.ItemsManager.ItemsOfInterest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ItemsOfInterest" Height="394" Width="651" WindowStartupLocation="CenterOwner" WindowStyle="SingleBorderWindow" Closing="Window_Closing">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.Resources>
+            <Style x:Key="ItemContainerStyleWithProperCollapse" TargetType="{x:Type ListViewItem}">
+                <Setter Property="Visibility" Value="{Binding Visible, Converter={StaticResource BoolToVisibility}}"/>
+            </Style>
+        </Grid.Resources>
+        <ListView Name="lvItems" Background="Black" ItemContainerStyle="{StaticResource ItemContainerStyleWithProperCollapse}" BorderBrush="Black" Margin="0,0,181,0">
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="ItemOfInterest">
+                    <DockPanel>
+                        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                            <TextBlock FontSize="15" Padding="1,0,0,0" TextWrapping="NoWrap" Text="{Binding Path=Title}" Foreground="{Binding Color}"></TextBlock>
+                            <TextBlock FontSize="11" Padding="10,0,0,0" VerticalAlignment="Bottom" TextWrapping="Wrap" Foreground="Gray" Text="{Binding Path=Owner}"></TextBlock>
+                            <TextBlock FontSize="12" Padding="10,0,0,0" VerticalAlignment="Bottom" TextWrapping="Wrap" Foreground="White" Text="{Binding Path=StashName}"></TextBlock>
+                            <TextBlock FontSize="11" Padding="10,0,0,0" VerticalAlignment="Bottom" TextWrapping="Wrap" Foreground="Gray" Text="{Binding Path=StashPos}"></TextBlock>
+                        </StackPanel>
+                        <TextBlock DockPanel.Dock="Bottom" FontSize="11" Padding="10,0,0,0" Visibility="{Binding DisplayExtraLine}" TextWrapping="Wrap" Foreground="Gray" Text="{Binding Path=ExtraLine}"></TextBlock>
+                    </DockPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView Name="lvFilters" HorizontalAlignment="Right" Width="181">
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="FilterEntry">
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox  Name="IsEnabled" IsChecked="{Binding IsChecked}" Checked="IsEnabled_Checked" Unchecked="IsEnabled_Unchecked" Margin="0,2,0,0" />
+                        <TextBlock Name="Owner" Text="{Binding Owner}" MinWidth="75" Margin="5,0,0,0" />
+                        <TextBlock Name="Stash" Text="{Binding Stash}" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

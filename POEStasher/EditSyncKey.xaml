@@ -1,0 +1,11 @@
+﻿<Window x:Class="POEStasher.EditSyncKey"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="EditSyncKey" Height="117" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <PasswordBox Height="23" Margin="50,12,10,0" Name="pbKey" VerticalAlignment="Top" />
+        <Label Content="Key:" Height="28" HorizontalAlignment="Left" Margin="12,10,0,0" Name="label1" VerticalAlignment="Top" />
+        <Button Content="Save" Margin="0,0,80,12" Name="bSave" Click="bSave_Click" Height="23" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="75" />
+        <Button Content="Cancel" HorizontalAlignment="Center" Click="bCancel_Click" Margin="80,0,0,12" Name="bCancel" IsCancel="True" Width="75" Height="23" VerticalAlignment="Bottom" />
+    </Grid>
+</Window>
